@@ -1,3 +1,5 @@
+# Họ tên : Lăng Nguyễn Minh Lượng - K225480106044
+# Lóp : K58KTP
 # Phát triển ứng dụng với mã nguồn mở-TEE0421
 ## Bài tập 01:
 ### A. Đăng ký tên miền xịn cho cá nhân
@@ -21,4 +23,3 @@
 #### Kết quả 
 <img width="1331" height="684" alt="image" src="https://github.com/user-attachments/assets/c5a22557-162f-49d4-8b54-161a6847af2b" />
 
-### B.Cài đặt Ubuntu + Docker
