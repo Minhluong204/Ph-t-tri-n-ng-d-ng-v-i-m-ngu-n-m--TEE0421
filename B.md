@@ -62,4 +62,4 @@
  <img width="1153" height="623" alt="image" src="https://github.com/user-attachments/assets/4548ab22-62ba-4b26-ab7c-b4883d2df78c" />
 
 2. Cài và bật SSH server
-   `sudo systemctl status ssh`
+   ```sudo systemctl status ssh```
