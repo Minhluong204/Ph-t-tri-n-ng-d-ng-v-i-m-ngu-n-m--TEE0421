@@ -45,3 +45,9 @@
 - Pick a username:admin1
 - Choose a password / Confirm: đặt mật khẩu
 - Done
+#### 8. chờ cài xong
+### d.Tháo ISO sau khi cài
++ VMware → VM → Settings → CD/DVD
+- bỏ tick Connected
+- bỏ tick Connect at power on
++ Quay lại VM và nhấn Enter để tiếp tục reboot
