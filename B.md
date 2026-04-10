@@ -64,6 +64,8 @@
 2. Cài và bật SSH server
    
    ```sudo systemctl status ssh```
+   
+Tiếp tục chạy
 
 ```
 sudo apt update
@@ -73,3 +75,12 @@ sudo systemctl status ssh
 ```
 
 <img width="1340" height="768" alt="image" src="https://github.com/user-attachments/assets/78d6d5f0-aeb8-425a-948b-77d4ccefc79d" />
+
+Kiểm tra IP:
+```
+ip -4 addr
+```
+
+- Kết quả : IPv4 `ens33` : 192.168.1.17
+<img width="879" height="260" alt="image" src="https://github.com/user-attachments/assets/c057ec74-e073-47ee-997f-5a6371a3682c" />
+
