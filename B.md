@@ -34,3 +34,12 @@
 #### Chọn Done
 #### 4.Network: để DHCP tự nhận IP → Done
 #### 5.Proxy configuration: để trống → Done
+#### 6. Storage:
+#### Chọn Use an entire disk
+#### Chọn Done và xác nhận Continue
+#### 7.Profile configuration (tạo user để đăng nhập và SSH):
+#### Your name: Minh Luong
+#### Your server’s name (hostname): ubuntu-server
+#### Pick a username:admin1
+#### Choose a password / Confirm: đặt mật khẩu
+#### Done
