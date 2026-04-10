@@ -9,7 +9,9 @@
 ### b.Tạo máy ảo Ubuntu trên VMware
 #### 1.Create a New Virtual Machine
 <img width="1348" height="487" alt="Ảnh chụp màn hình 2026-04-10 065834" src="https://github.com/user-attachments/assets/26cd9d93-6a3c-444d-9578-43e7562c3a72" />
+
 #### 2.Chọn Installer disc image file (iso) → trỏ đến ISO Ubuntu Server
+
  <img width="509" height="489" alt="image" src="https://github.com/user-attachments/assets/5d73c3dd-985f-49ad-8778-a027abac1299" />
 <img width="665" height="479" alt="image" src="https://github.com/user-attachments/assets/3cfb6d42-8496-4f61-91e4-b8906adbcb3e" />
 
@@ -38,7 +40,7 @@
 - Chọn Use an entire disk
 - Chọn Done và xác nhận Continue
 #### 7.Profile configuration (tạo user để đăng nhập và SSH):
-- Your name: Minh Luong
+- Your name: `Minh Luong`
 - Your server’s name (hostname): ubuntu-server
 - Pick a username:admin1
 - Choose a password / Confirm: đặt mật khẩu
