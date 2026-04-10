@@ -62,4 +62,14 @@
  <img width="1153" height="623" alt="image" src="https://github.com/user-attachments/assets/4548ab22-62ba-4b26-ab7c-b4883d2df78c" />
 
 2. Cài và bật SSH server
+   
    ```sudo systemctl status ssh```
+
+```
+sudo apt update
+sudo apt install -y openssh-server
+sudo systemctl enable --now ssh
+sudo systemctl status ssh 
+```
+
+<img width="1340" height="768" alt="image" src="https://github.com/user-attachments/assets/78d6d5f0-aeb8-425a-948b-77d4ccefc79d" />
