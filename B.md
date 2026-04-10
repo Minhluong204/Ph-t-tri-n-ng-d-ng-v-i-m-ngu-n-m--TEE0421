@@ -15,6 +15,13 @@
 
 #### 3.Guest OS: Linux → Ubuntu 64-bit
 #### 4.Cấu hình gợi ý:
-#### 	CPU: 2 cores
-####	 RAM: 2–4 GB
-#### 	Disk: 20–30 
+#### 	- CPU: 2 cores
+####	 - RAM: 2–4 GB
+#### 	- Disk: 20–30 
+
+<img width="578" height="476" alt="image" src="https://github.com/user-attachments/assets/02a95b44-4a24-4ca9-8d7f-66a39b8d4e46" />
+
+#### 5.Network Adapter: chọn Bridged 
+<img width="829" height="712" alt="image" src="https://github.com/user-attachments/assets/0cf3c2e8-fa11-483f-b960-38daab2b4c40" />
+
+#### 6.Finish → Power on máy ảo
