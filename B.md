@@ -15,6 +15,6 @@
 
 #### 3.Guest OS: Linux → Ubuntu 64-bit
 #### 4.Cấu hình gợi ý:
-#### CPU: 2 cores
-#### RAM: 2–4 GB
-#### Disk: 20–30 GB
+#### 	CPU: 2 cores
+####	 RAM: 2–4 GB
+#### 	Disk: 20–30 
