@@ -47,7 +47,12 @@
 - Done
 #### 8. chờ cài xong
 ### d.Tháo ISO sau khi cài
-+ VMware → VM → Settings → CD/DVD
-- bỏ tick Connected
-- bỏ tick Connect at power on
-+ Quay lại VM và nhấn Enter để tiếp tục reboot
+ VMware → VM → Settings → CD/DVD
+ - bỏ tick Connected
+ - bỏ tick Connect at power on
+ Quay lại VM và nhấn Enter để tiếp tục reboot
+
+ <img width="650" height="385" alt="image" src="https://github.com/user-attachments/assets/7e83356e-266a-49f5-9893-9c8ee683c967" />
+ 
+ <img width="773" height="720" alt="image" src="https://github.com/user-attachments/assets/9afb9ac8-f6ec-4e37-9982-8a0df21c61db" />
+
