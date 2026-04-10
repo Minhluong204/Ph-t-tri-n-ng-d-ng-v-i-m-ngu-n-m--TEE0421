@@ -56,3 +56,10 @@
  
  <img width="773" height="720" alt="image" src="https://github.com/user-attachments/assets/9afb9ac8-f6ec-4e37-9982-8a0df21c61db" />
 
+ #### e.Đăng nhập Ubuntu Server cài SSH và lấy IP
+1. Sau khi máy boot vào Ubuntu Server (tty), đăng nhập user đã tạo admin1
+
+ <img width="1153" height="623" alt="image" src="https://github.com/user-attachments/assets/4548ab22-62ba-4b26-ab7c-b4883d2df78c" />
+
+2. Cài và bật SSH server
+   `sudo systemctl status ssh`
