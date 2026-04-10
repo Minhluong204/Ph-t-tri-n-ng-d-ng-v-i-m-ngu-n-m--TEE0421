@@ -25,3 +25,12 @@
 <img width="829" height="712" alt="image" src="https://github.com/user-attachments/assets/0cf3c2e8-fa11-483f-b960-38daab2b4c40" />
 
 #### 6.Finish → Power on máy ảo
+### c.Cài Ubuntu 24.04.4 Live Server
+#### 1.chọn Try or Install Ubuntu Server
+#### 2.Language: chọn English
+#### 3.Keyboard configuration:
+#### - Layout: English (US)
+#### - Variant: English (US)
+#### Chọn Done
+#### 4.Network: để DHCP tự nhận IP → Done
+#### 5.Proxy configuration: để trống → Done
