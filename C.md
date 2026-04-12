@@ -210,4 +210,64 @@ curl http://localhost/ | head -n 20
 
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/8f0f27e4-5c48-4e03-b36c-5db7c617cb3f" />
 
+2. Kiểm tra proxy sang Node-RED (location `/api`)
+```
+curl http://localhost/api/hello
+```
 
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/e96e58d1-7dc0-4cde-b619-8169aaa4b46e" />
+
+## 7. Bắt buộc đăng nhập Node-RED (Edit `./nodered/settings.js`)
+### 1. Chạy docker compose lần đầu để Node-RED tự sinh cấu hình trong `./nodered`
+Chuyển vào thư mục dự án và chạy compose:
+```
+cd ~/myapp
+docker compose up -d
+```
+Kiểm tra các container đang chạy:
+```
+docker compose ps
+```
+Kiểm tra Node-RED đã tự sinh dữ liệu và file cấu hình trong thư mục `./nodered`:
+```
+ls -la ./nodered | head
+ls -la ./nodered/settings.js
+```
+
+<img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/69fc9aed-4c40-432f-93f2-71f2c1953623" />
+
+### 2.Tạo mật khẩu dạng hash (bcrypt) để dùng trong `settings.js`
+Node-RED yêu cầu lưu mật khẩu ở dạng hash. Tạo hash bằng cách chạy lệnh sau:
+```
+docker exec -it nodered node -e "console.log(require('bcryptjs').hashSync(process.argv[1], 8));" '123'
+```
+Sau khi chạy, terminal sẽ in ra chuỗi hash $2b$08$RCRRyQ37rF8B27IBkRqqbuKZ9.z.oncHTzkUjLRNSpPXgj415//cm
+Copy chuỗi hash này để dán vào `settings.js`.
+### 3. Edit `./nodered/settings.js` để bật đăng nhập (adminAuth)
+Mở file:
+```
+nano ./nodered/settings.js
+```
+Trong nano, tìm `adminAuth`:
+
+Bấm `Ctrl + W`
+- Gõ adminAuth rồi `Enter`
+Tại block `adminAuth`, tiến hành:
+- Bỏ comment (xoá dấu // ở đầu các dòng của block adminAuth nếu đang bị comment)
+- Điền username và dán password (hash bcrypt) vừa tạo
+
+<img width="1366" height="730" alt="image" src="https://github.com/user-attachments/assets/f1d22efc-8777-4dd7-bc6e-f284731d8f40" />
+
+Lưu và thoát:
+
+- Lưu: `Ctrl + O` → `Enter`
+- Thoát: `Ctrl + X`
+
+### 4. Restart Node-RED để áp dụng cấu hình
+```
+docker compose restart nodered
+```
+### 5. Kiểm tra kết quả
+Mở trình duyệt:`http://192.168.1.12:1880/`
+
+<img width="1347" height="710" alt="image" src="https://github.com/user-attachments/assets/0e2aa372-3ceb-49d5-80cc-c93c58ef8d3c" />
