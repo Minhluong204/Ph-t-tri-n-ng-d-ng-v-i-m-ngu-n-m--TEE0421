@@ -145,7 +145,7 @@ ls
 
 <img width="1365" height="765" alt="image" src="https://github.com/user-attachments/assets/33f7e82f-7d92-489e-a237-ecada3370945" />
 
-Bước 3 — Tạo và sửa file bằng nano
+B3: Tạo và sửa file bằng nano
 Tạo file `note.txt`:
 ```
 nano note.txt
@@ -158,3 +158,263 @@ Lưu và thoát:
 
 - Nhấn `CTRL + O` → nhấn `Enter` để xác nhận lưu
 - Nhấn `CTRL + X` để thoát
+
+Kiểm tra lại :
+`ls -l`
+
+<img width="1360" height="768" alt="image" src="https://github.com/user-attachments/assets/381b06c9-be62-439b-afdc-23eee7a144ae" />
+
+B4: Copy file 
+
+Copy `note.txt` sang thư mục `data` với tên mới `note_copy.txt`:
+`
+cp note.txt data/note_copy.txt
+`
+
+Kiểm tra:
+```
+ls -l
+ls -l data
+```
+<img width="1356" height="767" alt="image" src="https://github.com/user-attachments/assets/87ba9bef-29f8-4b2e-ac0a-714107354d93" />
+
+B5: Thay đổi quyền file
+
+Xem quyền hiện tại:
+```
+ls -l note.txt
+```
+Đổi quyền `note.txt` thành `644`:
+```
+sudo chmod 644 note.txt
+ls -l note.txt
+```
+Đổi quyền file copy thành `777`:
+```
+sudo chmod 777 data/note_copy.txt
+ls -l data/note_copy.txt
+```
+
+<img width="1115" height="623" alt="image" src="https://github.com/user-attachments/assets/41f9f5fb-2c36-406f-8adb-2b4cab5700c7" />
+
+B6: Edit file bằng sudo nano
+```
+sudo nano data/note_copy.txt
+```
+Thêm 1 dòng ví dụ:
+```
+Da sua file
+```
+
+Lưu và thoát:
+- `CTRL + O` → `Enter`
+- `CTRL + X`
+  
+<img width="1111" height="627" alt="image" src="https://github.com/user-attachments/assets/6c67f34b-31a5-4c82-be62-c440cdad6eee" />
+
+
+B7: Xem IP của máy Ubuntu
+`
+ip -4 addr
+`
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/3684a65f-bb0b-4405-a419-e894ed20b7d2" />
+
+### 3. Cài đặt Docker cho Ubuntu 24.04.4 LTS
+#### Cập nhật hệ thống và cài gói cần thiết
+```
+sudo apt update
+sudo apt install -y ca-certificates curl gnupg
+```
+#### Thêm GPG key của Docker
+```
+sudo install -m 0755 -d /etc/apt/keyrings
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
+  | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+```
+
+<img width="769" height="111" alt="image" src="https://github.com/user-attachments/assets/dd849c23-6fec-4c3c-b931-36fcc1df7e29" />
+
+#### Thêm Docker repository
+```
+echo \
+"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+https://download.docker.com/linux/ubuntu \
+$(. /etc/os-release && echo $VERSION_CODENAME) stable" \
+| sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+Cập nhật lại package list:
+```
+sudo apt update
+```
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/2b6bc823-58a8-4755-b3a9-dc9d2f85eca3" />
+
+#### Cài Docker Engine + Docker Compose plugin
+```
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+Bật Docker chạy ngay và tự khởi động cùng hệ thống:
+```
+sudo systemctl enable --now docker
+```
+
+### 4. Kiểm tra Docker đã cài thành công
+```
+docker --version
+docker compose version
+sudo systemctl status docker
+```
+Kết quả:
+- Có version của Docker
+- Có version của `docker compose`
+- `systemctl status docker` báo `Active: active (running)`
+(nhấn `q` để thoát màn hình status)
+
+<img width="1220" height="668" alt="image" src="https://github.com/user-attachments/assets/2049b659-4601-4b94-8cff-494b9bb12eb8" />
+
+### 5. Cấu hình chạy Docker không cần sudo
+Thêm user hiện tại vào nhóm `docker`:
+```
+sudo usermod -aG docker $USER
+```
+Áp dụng group mới (không cần reboot):
+```
+newgrp docker
+```
+Kiểm tra nhóm hiện tại:
+```
+groups
+```
+Kỳ vọng có chữ `docker`.
+
+Test chạy Docker không cần sudo:
+```
+docker run --rm hello-world
+```
+
+Nếu thấy:
+```
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+```
+
+=> Docker hoạt động đúng.
+
+<img width="1170" height="686" alt="image" src="https://github.com/user-attachments/assets/99594bda-426b-43ff-8e78-ced0faa101e8" />
+
+### 6. Tìm hiểu tập lệnh của docker và docker compose
+#### 1. Docker
+Kiểm tra phiên bản và thông tin Docker
+```
+docker --version
+docker version
+docker info
+```
+- `docker --version`: xem phiên bản Docker client
+- `docker version`: xem chi tiết phiên bản client/server
+- `docker info`: thông tin tổng quan Docker Engine (storage driver, số container, network…)
+
+Quản lý Image
+```
+docker images
+docker pull nginx:latest
+docker rmi nginx:latest
+docker image prune -a
+```
+- `docker images`: liệt kê các image đang có
+- `docker pull <image>:<tag>`: tải image từ registry (thường là Docker Hub)
+- `docker rmi <image>`: xoá image
+- `docker image prune -a`: dọn image không dùng (cẩn thận vì có thể xoá nhiều image)
+
+Quản lý Container
+```
+docker ps
+docker ps -a
+docker run --name web -d -p 80:80 nginx:latest
+docker logs web
+docker exec -it web bash
+docker stop web
+docker start web
+docker restart web
+docker rm web
+```
+- `docker ps`: xem container đang chạy
+- `docker ps -a`: xem tất cả container (kể cả đã dừng)
+- `docker run`: tạo + chạy container
+Ví dụ: `-d` chạy nền, `--name` web đặt tên, `-p 80:80` map cổng host:container
+- `docker logs <name`>: xem log
+- `docker exec -it <name> bash`: vào container để thao tác
+- `docker stop/start/restart`: dừng / chạy / restart container
+- `docker rm <name>`: xoá container (phải stop trước, hoặc dùng `-f`)
+
+Quản lý Volume
+```
+docker volume ls
+docker volume create mydata
+docker volume inspect mydata
+docker volume rm mydata
+```
+
+Ghi chú:
+- Volume giúp dữ liệu không mất khi xoá container.
+- Thường dùng cho database, ứng dụng cần lưu dữ liệu.
+
+ Quản lý Network 
+ ```
+docker network ls
+docker network create mynet
+docker network inspect mynet
+docker network rm mynet
+```
+
+Ghi chú:
+- Network giúp các container giao tiếp với nhau qua tên container/service.
+- Khi dùng Docker Compose, network thường được tạo tự động.
+
+#### 2.Docker Compose 
+
+Kiểm tra phiên bản
+```
+docker compose version
+```
+
+Các lệnh Compose cơ bản
+```
+docker compose up -d
+docker compose ps
+docker compose logs -f
+docker compose down
+```
+
+Giải thích:
+
+- `up -d`: tạo và chạy tất cả service theo file `docker-compose.yml` / `compose.yaml`
+- `ps`: xem trạng thái các service/container
+- `logs -f`: xem log realtime
+- `down`: dừng và xoá container + network do compose tạo
+(muốn xoá cả volume dùng `docker compose down -v`)
+
+Build image (khi có Dockerfile)
+```
+docker compose build
+docker compose up -d --build
+```
+
+Stop / Start / Restart theo stack compose
+```
+docker compose stop
+docker compose start
+docker compose restart
+```
+
+Xem cấu hình sau khi compose xử lý biến môi trường
+```
+docker compose config
+```
+
+### 7.Mở firewall UFW cho cổng 80, 1880, 9630
