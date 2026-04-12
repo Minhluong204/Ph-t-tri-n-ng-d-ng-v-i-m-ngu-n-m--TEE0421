@@ -418,3 +418,51 @@ docker compose config
 ```
 
 ### 7.Mở firewall UFW cho cổng 80, 1880, 9630
+
+Kiểm tra trạng thái UFW
+```
+sudo ufw status
+```
+
+- Nếu kết quả là `Statu: inactive`: UFW đang tắt (chưa chặn gì).
+- Nếu kết quả là `Status: active`: UFW đang bật (đang áp dụng rule).
+
+<img width="437" height="87" alt="image" src="https://github.com/user-attachments/assets/350aafc6-65d5-4b1b-832b-4a1a0d4b8e24" />
+
+
+Cho phép SSH để tránh mất kết nối
+
+Vì thao tác qua SSH nên cần cho phép SSH (port 22) trước khi bật UFW:
+```
+sudo ufw allow OpenSSH
+```
+
+<img width="460" height="69" alt="image" src="https://github.com/user-attachments/assets/10c28f12-86ca-4448-9923-42a1b2f6d774" />
+
+Mở các cổng yêu cầu: 80, 1880, 9630
+```
+sudo ufw allow 80/tcp
+sudo ufw allow 1880/tcp
+sudo ufw allow 9630/tcp
+```
+
+<img width="1129" height="635" alt="image" src="https://github.com/user-attachments/assets/a83f946b-f0c6-4ab3-8c19-6400fe8d67f0" />
+
+Bật UFW và cho phép tự khởi động cùng hệ thống
+```
+sudo ufw enable
+```
+Nhập `y` rồi `enter`
+
+<img width="1160" height="649" alt="image" src="https://github.com/user-attachments/assets/17cbe12d-9365-40da-9656-73b715610fdb" />
+
+
+Kiểm tra lại rule đã được áp dụng
+```
+sudo ufw status numbered
+```
+
+<img width="1165" height="644" alt="image" src="https://github.com/user-attachments/assets/044e7cfc-85f5-45aa-af08-d3b97df88423" />
+
+
+
