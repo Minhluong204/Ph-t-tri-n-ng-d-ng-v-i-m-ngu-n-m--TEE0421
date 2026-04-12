@@ -81,6 +81,80 @@ Kiểm tra IP:
 ip -4 addr
 ```
 
-- Kết quả : IPv4 `ens33` : 192.168.1.17
-<img width="879" height="260" alt="image" src="https://github.com/user-attachments/assets/c057ec74-e073-47ee-997f-5a6371a3682c" />
+- Kết quả : IPv4 `ens33` : 192.168.1.12
+  
+<img width="1066" height="159" alt="image" src="https://github.com/user-attachments/assets/3ac0664f-03e0-499c-936e-646246d4a4ff" />
 
+#### f.SSH từ Windows CMD vào Ubuntu
+Trên Windows mở CMD và chạy:
+```
+ssh admin1@192.168.1.12
+```
+Lần đầu kết nối sẽ hỏi xác nhận fingerprint:
+- gõ yes → Enter
+- Sau đó nhập password → Enter
+
+<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/139e5316-321f-4422-9385-857c78f6768d" />
+
+Kết quả sau khi SSH thành công sẽ thấy:
+
+- Welcome to Ubuntu 24.04.4 LTS ...
+- prompt dạng: `admin1@ubuntu-server:~$`
+
+<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/42d499c7-1496-44b7-99ea-3437231b04d0" />
+
+ ### 2.Tìm hiểu các lệnh cơ bản của ubuntu
+ #### a.Đăng nhập Ubuntu
+ Từ Windows CMD:
+ ```
+ssh admin1@192.168.1.12
+```
+Sau khi đăng nhập thành công sẽ thấy prompt dạng:
+```
+admin1@ubuntu-server:~$
+```
+#### b.Thực hành các lệnh
+- Kiểm tra thư mục hiện tại + liệt kê file
+```
+pwd
+ls
+ls -l
+```
+
+<img width="283" height="118" alt="image" src="https://github.com/user-attachments/assets/1703ea7e-697f-46a6-9427-cea0dd2b86ce" />
+
+B1:Tạo thư mục làm bài
+
+Tạo thư mục `B2` và thư mục con `data`:
+```
+mkdir -p B2/data
+```
+Kiểm tra lại 
+```
+ls -l
+```
+
+<img width="550" height="220" alt="image" src="https://github.com/user-attachments/assets/99df78c4-375d-4fa2-9909-967b0fd9b196" />
+
+B2: Chuyển thư mục làm việc: cd path
+```
+cd B2
+pwd
+ls
+```
+
+<img width="1365" height="765" alt="image" src="https://github.com/user-attachments/assets/33f7e82f-7d92-489e-a237-ecada3370945" />
+
+Bước 3 — Tạo và sửa file bằng nano
+Tạo file `note.txt`:
+```
+nano note.txt
+```
+Nhập nội dung :
+- `Bai tap Thay Cop`
+- `Deadline :13/04/2026`
+
+Lưu và thoát:
+
+- Nhấn `CTRL + O` → nhấn `Enter` để xác nhận lưu
+- Nhấn `CTRL + X` để thoát
