@@ -22,10 +22,6 @@ https://one.dash.cloudflare.com
 
 ## Convert lệnh docker run sang docker compose
 
-<img width="1366" height="633" alt="image" src="https://github.com/user-attachments/assets/35254c83-4a61-4035-abbb-025a72872757" />
-
-
-<img width="1030" height="472" alt="image" src="https://github.com/user-attachments/assets/6294eba0-0547-4fe5-a98b-9490d5daf36b" />
 
 ## Convert lệnh docker run sang docker compose
 Cloudflare cung cấp lệnh mẫu dạng:
@@ -75,10 +71,18 @@ Hostname
 - Subdomain: trống
 - Domain: minhluong204.id.vn
 - Path: để trống (public toàn bộ website)
+
+  
+ <img width="1366" height="633" alt="image" src="https://github.com/user-attachments/assets/35254c83-4a61-4035-abbb-025a72872757" />
+
+ 
 Service (Origin)
 - Type: HTTP
 - URL: nginx:80
 Bấm Save / Complete setup.
+
+<img width="1030" height="472" alt="image" src="https://github.com/user-attachments/assets/6294eba0-0547-4fe5-a98b-9490d5daf36b" />
+
 
 ### Kiểm tra URL đã public cho end-user
 Truy cập từ trình duyệt:
