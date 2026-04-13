@@ -64,3 +64,73 @@ if __name__ == '__main__':
 
 ```
 
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/6cd539a5-dcdf-4af9-9fb2-496f57d53bdf" />
+
+Lưu/thoát:
+- Lưu: `Ctrl + O` → `Enter`
+- Thoát: `Ctrl + X`
+
+## 3. Tạo file `./myapi/requirements.txt`
+```
+nano ./myapi/requirements.txt
+```
+Nội dung
+```
+flask
+```
+## 4. Tạo file `./myapi/Dockerfile`
+```
+nano ./myapi/Dockerfile
+```
+ nội dung:
+ ```
+# Sử dụng phiên bản Python nhẹ để giảm dung lượng image
+FROM python:3.9-slim
+
+# Thiết lập thư mục làm việc bên trong container
+WORKDIR /app
+
+# Sao chép file requirements vào và cài đặt thư viện
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Sao chép toàn bộ mã nguồn vào container
+COPY . .
+
+# Thông báo container sẽ chạy ở cổng 9630
+EXPOSE 9630
+
+# Lệnh khởi chạy ứng dụng
+CMD ["python", "app.py"]
+```
+## 5. Sửa `docker-compose.yml` để chạy service `myapi`
+```
+nano ~/myapp/docker-compose.yml
+```
+Thêm service `myapi` (đảm bảo indent YAML đúng, myapi phải cùng cấp với nginx, nodered):
+```
+  myapi:
+    build:
+      context: ./myapi
+      dockerfile: Dockerfile
+    container_name: myapi
+    ports:
+      - "9630:9630"
+    restart: unless-stopped
+```
+
+<img width="1123" height="635" alt="image" src="https://github.com/user-attachments/assets/31842417-e2f3-4e41-a409-7fddacc2ca36" />
+
+Kiểm tra cấu hình compose:
+```
+cd ~/myapp
+docker compose config
+```
+Build + chạy lại:
+```
+docker compose up -d --build
+docker compose ps
+```
+Test `myapi` trực tiếp 
+```
+
