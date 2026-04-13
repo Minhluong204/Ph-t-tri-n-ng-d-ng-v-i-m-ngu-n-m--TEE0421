@@ -57,7 +57,7 @@ Tạo 3 node và nối theo thứ tự:
 - URL: /api/hello
 
 2. function
-   ```
+```
    msg.payload = { ok: true, msg: "Hello from Node-RED" };
 return msg;
 ```
@@ -65,6 +65,7 @@ return msg;
  Bấm Deploy để lưu flow.
 
 ### Test API trực tiếp qua Node‑RED
+
 ```
 curl -i http://localhost:1880/api/hello
 ```
@@ -99,3 +100,62 @@ docker compose restart nginx
 ```
 
 ### Test API qua Nginx Reverse Proxy
+Do Node‑RED endpoint đang là /api/hello, và Nginx prefix cũng là /api/, nên URL test sẽ là:
+```
+curl -i http://localhost/api/api/hello
+```
+<img width="1247" height="687" alt="image" src="https://github.com/user-attachments/assets/b777a010-8b8a-4216-bc3d-d9ac7c949f28" />
+
+## 6. Sửa `./myweb/index.html` để gọi API đã khai báo proxy_pass 
+Mở file:
+```
+nano ~/myapp/myweb/index.html
+```
+Nội dung ví dụ hoàn chỉnh (HTML + JS gọi API qua Nginx):
+```
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thông tin cá nhân</title>
+</head>
+<body>
+  <h1>Thông tin cá nhân</h1>
+  <ul>
+    <li>Họ & tên: LANG NGUYEN MINH LUONG</li>
+    <li>MSSV: K225480106044</li>
+    <li>Lớp: K58KTP</li>
+    <li>Trường: Đại học Kỹ thuật Công nghiệp Thái Nguyên</li>
+    <li>Email: k225480106044@gmail.com</li>
+  </ul>
+
+  <h2>Test API qua Nginx</h2>
+  <button onclick="callAPI()">Gọi API</button>
+
+  <pre id="result"></pre>
+
+  <script>
+    function callAPI() {
+      fetch('/api/hello')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('result').innerText =
+            JSON.stringify(data, null, 2);
+        })
+        .catch(err => {
+          document.getElementById('result').innerText = "Lỗi: " + err;
+        });
+    }
+  </script>
+</body>
+</html>
+```
+
+<img width="1133" height="628" alt="image" src="https://github.com/user-attachments/assets/352a62ff-f9c9-4b5d-9a9f-1833d29ed9ad" />
+
+Kiểm thử trên trình duyệt (End-user)
+- Trên Windows mở: `http://192.168.1.10/`
+
+  <img width="728" height="464" alt="image" src="https://github.com/user-attachments/assets/ba6698f3-f848-4799-a91a-5ed3b31f7bbf" />
+
