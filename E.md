@@ -32,4 +32,6 @@ ip -4 addr
 ```
 curl http://localhost/api/
 ```
-<img width="1120" height="623" alt="image" src="https://github.com/user-attachments/assets/e772332b-1323-4efc-95a7-7718c28eb435" />
+<img width="1366" height="733" alt="image" src="https://github.com/user-attachments/assets/c16b279a-902c-46b6-80d5-350e8c03b1e1" />
+
+
