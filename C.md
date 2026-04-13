@@ -241,7 +241,7 @@ Node-RED yêu cầu lưu mật khẩu ở dạng hash. Tạo hash bằng cách c
 ```
 docker exec -it nodered node -e "console.log(require('bcryptjs').hashSync(process.argv[1], 8));" '123'
 ```
-Sau khi chạy, terminal sẽ in ra chuỗi hash $2b$08$RCRRyQ37rF8B27IBkRqqbuKZ9.z.oncHTzkUjLRNSpPXgj415//cm
+Sau khi chạy, terminal sẽ in ra chuỗi hash $2b$08$7GYRDXh8Oni3X/aBfTbL4u1eakp1bHyH2K3ir2m/GTLHggwLY68Ya
 Copy chuỗi hash này để dán vào `settings.js`.
 ### 3. Edit `./nodered/settings.js` để bật đăng nhập (adminAuth)
 Mở file:
@@ -271,3 +271,4 @@ docker compose restart nodered
 Mở trình duyệt:`http://192.168.1.12:1880/`
 
 <img width="1347" height="710" alt="image" src="https://github.com/user-attachments/assets/0e2aa372-3ceb-49d5-80cc-c93c58ef8d3c" />
+
