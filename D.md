@@ -133,4 +133,32 @@ docker compose ps
 ```
 Test `myapi` trực tiếp 
 ```
+http://192.168.1.10:9630/
+```
 
+<img width="829" height="190" alt="image" src="https://github.com/user-attachments/assets/1d359b83-72ec-4aca-8364-25c2dc71f9e5" />
+
+## 6. Sửa `nginx/nginx.conf` để `/api` trỏ tới `myapi` cổng 9630
+Mở flie :
+```
+nano ~/myapp/nginx/nginx.conf
+```
+Sửa/Thay block location `/api`  thành:
+```
+location /api {
+  proxy_pass http://myapi:9630/tinh-vat;
+  proxy_set_header Host $host;
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header X-Forwarded-Proto $scheme;
+}
+```
+Restart nginx:
+```
+docker compose restart nginx
+```
+## Kiểm thử cuối cùng
+Gọi API thông qua Nginx (port 80):
+```
+curl -i "http://192.168.1.10/api/"
+```
