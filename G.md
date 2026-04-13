@@ -14,7 +14,8 @@ https://one.dash.cloudflare.com
 
 5. Đặt tên tunnel (myapp-tunnel) → Save tunnel.
 
-<img width="1326" height="629" alt="image" src="https://github.com/user-attachments/assets/7a722b3a-cbc5-4509-8d2d-6c02aade335e" />
+<img width="1366" height="644" alt="image" src="https://github.com/user-attachments/assets/215e837f-95f9-480c-b5c1-6e4b103d2bc4" />
+
 6. Ở bước Install and run connectors, chọn Docker và copy Tunnel Token
 
 <img width="1353" height="618" alt="image" src="https://github.com/user-attachments/assets/c3661963-1191-4295-ab00-10adcc044f32" />
