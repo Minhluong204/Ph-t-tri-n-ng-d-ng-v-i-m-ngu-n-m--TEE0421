@@ -239,9 +239,13 @@ ls -la ./nodered/settings.js
 ### 2.Tạo mật khẩu dạng hash (bcrypt) để dùng trong `settings.js`
 Node-RED yêu cầu lưu mật khẩu ở dạng hash. Tạo hash bằng cách chạy lệnh sau:
 ```
-docker exec -it nodered node -e "console.log(require('bcryptjs').hashSync(process.argv[1], 8));" '123'
+docker exec -it nodered node-red admin hash-pw
 ```
+Nhập mật khẩu 
 Sau khi chạy, terminal sẽ in ra chuỗi hash $2b$08$7GYRDXh8Oni3X/aBfTbL4u1eakp1bHyH2K3ir2m/GTLHggwLY68Ya
+
+<img width="755" height="54" alt="image" src="https://github.com/user-attachments/assets/016b5004-1e6a-4b8f-92e5-5181a383a8a2" />
+
 Copy chuỗi hash này để dán vào `settings.js`.
 ### 3. Edit `./nodered/settings.js` để bật đăng nhập (adminAuth)
 Mở file:
@@ -256,7 +260,7 @@ Tại block `adminAuth`, tiến hành:
 - Bỏ comment (xoá dấu // ở đầu các dòng của block adminAuth nếu đang bị comment)
 - Điền username và dán password (hash bcrypt) vừa tạo
 
-<img width="1366" height="730" alt="image" src="https://github.com/user-attachments/assets/f1d22efc-8777-4dd7-bc6e-f284731d8f40" />
+<img width="1139" height="677" alt="image" src="https://github.com/user-attachments/assets/32250ea6-a4ba-4d0c-b5af-8462a80b21e4" />
 
 Lưu và thoát:
 
